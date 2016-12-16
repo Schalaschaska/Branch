@@ -30,39 +30,68 @@ namespace Branch_3
         private void button_Click(object sender, RoutedEventArgs e)
         {
             listBox.Items.Clear();
+            listBox1.Items.Clear();
             Regex X = new Regex(@"^\d+$");
             if (X.IsMatch(textBox.Text))
             {
 
                 List<int> myAll = new List<int>();//Основной список
+                List<int> all_2 = new List<int>();
                 int index;
                 int itemCount = Convert.ToInt32(textBox.Text);
-
-                Random rnd1 = new Random();
-                int number;
-                int kol = 0;
-                for (index = 1; index <= itemCount; index++)
+                if (itemCount < 2)
                 {
-                    number = 1 + rnd1.Next(30);
-                    myAll.Add(number);
-                    listBox.Items.Add(number);
+                    MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                int[] mas = myAll.ToArray<int>();
-                for (int i = 1; i <= mas.Length - 1; i++)
+                else
                 {
-                    if (mas[i] < mas[0] && mas[i] > mas[itemCount - 1])
-                        kol++;
+                    Random rnd1 = new Random();
+                    int number;
+                    for (index = 1; index <= itemCount; index++)
+                    {
+                        number = 1 + rnd1.Next(30);
+                        myAll.Add(number);
+                        listBox.Items.Add(number);
+                    }
+
+                    int[] mas = myAll.ToArray<int>();
+
+                    for (int i = 0; i <= mas.Length - 1; i++)
+                    {
+                        if (radioButton.IsChecked == true)
+                        {
+                            if (mas[i] % 2 == 0)
+                            {
+                                all_2.Add(mas[i]);
+                            }
+                        }
+                        if (radioButton1.IsChecked == true)
+                        {
+                            if (mas[i] % 2 != 0)
+                            {
+                                all_2.Add(mas[i]);
+                            }
+                        }
+
+
+                    }
+                    foreach (int i in all_2)
+                    {
+                        listBox1.Items.Add(i);
+                    }
+
+
+
+
 
                 }
-                label.Content = "Количество элементов, меньше\n" + mas[0] + " и больше " + mas[itemCount - 1] + " равно " + kol;
-
             }
-
             else
             {
                 MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
+
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
