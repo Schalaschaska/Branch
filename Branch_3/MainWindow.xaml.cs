@@ -54,8 +54,7 @@ namespace Branch_3
                         z++;
 
                 }
-                kol = mas.Length - z;
-                label.Content = "Знак меняется " + kol + " раз(a)";
+                label.Content = "В массиве " + z + " неотрицательных\nэлементов";
 
             }
 
@@ -63,6 +62,7 @@ namespace Branch_3
             {
                 MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
 
         }
 
