@@ -30,17 +30,18 @@ namespace Branch_3
         private void button_Click(object sender, RoutedEventArgs e)
         {
             listBox.Items.Clear();
+            listBox1.Items.Clear();
             Regex X = new Regex(@"^\d+$");
             if (X.IsMatch(textBox.Text))
             {
 
                 List<int> myAll = new List<int>();//Основной список
+                List<int> List_2 = new List<int>();
                 int index;
                 int itemCount = Convert.ToInt32(textBox.Text);
 
                 Random rnd1 = new Random();
                 int number;
-                int sum = 0;
                 for (index = 1; index <= itemCount; index++)
                 {
                     number = 1 + rnd1.Next(30);
@@ -50,14 +51,18 @@ namespace Branch_3
                 int[] mas = myAll.ToArray<int>();
                 for (int i = 0; i <= mas.Length - 1; i++)
                 {
-
-                    if (mas[i] < 21)
+                    if (mas[i] % 5 == 0)
                     {
-                        sum = sum + mas[i];
+                        mas[i] = mas[i] + 1;
+
                     }
+                    List_2.Add(mas[i]);
 
                 }
-                label.Content = "Сумма элементов, \nменьше 21 равна " + sum;
+                foreach (int i in List_2)
+                {
+                    listBox1.Items.Add(i);
+                }
 
             }
 
