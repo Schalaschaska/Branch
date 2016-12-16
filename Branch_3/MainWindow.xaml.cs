@@ -30,7 +30,6 @@ namespace Branch_3
         private void button_Click(object sender, RoutedEventArgs e)
         {
             listBox.Items.Clear();
-            listBox1.Items.Clear();
             Regex X = new Regex(@"^\d+$");
             if (X.IsMatch(textBox.Text))
             {
@@ -38,6 +37,7 @@ namespace Branch_3
                 List<int> myAll = new List<int>();//Основной список
                 List<int> all_2 = new List<int>();
                 int index;
+                int kol = 0;
                 int itemCount = Convert.ToInt32(textBox.Text);
                 if (itemCount < 2)
                 {
@@ -58,30 +58,14 @@ namespace Branch_3
 
                     for (int i = 0; i <= mas.Length - 1; i++)
                     {
-                        if (radioButton.IsChecked == true)
+
+                        if (mas[i] % 3 == 0)
                         {
-                            if (mas[i] % 2 == 0)
-                            {
-                                all_2.Add(mas[i]);
-                            }
-                        }
-                        if (radioButton1.IsChecked == true)
-                        {
-                            if (mas[i] % 2 != 0)
-                            {
-                                all_2.Add(mas[i]);
-                            }
+                            kol++;
                         }
 
-
                     }
-                    foreach (int i in all_2)
-                    {
-                        listBox1.Items.Add(i);
-                    }
-
-
-
+                    label.Content = "Количество элементов\nкратных 3 равно " + kol;
 
 
                 }
