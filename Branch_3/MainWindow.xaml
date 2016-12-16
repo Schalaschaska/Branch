@@ -12,6 +12,5 @@
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.875,2.478" Margin="24,24,0,0"/>
         <Button x:Name="button" Content="Выполнить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="24,52,0,0" Click="button_Click"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="154" Margin="225,24,0,0"/>
-        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="123" VerticalAlignment="Top" Width="154" Margin="225,146,0,0"/>
     </Grid>
 </Window>
