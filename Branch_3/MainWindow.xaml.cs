@@ -39,8 +39,7 @@ namespace Branch_3
                 int itemCount = Convert.ToInt32(textBox.Text);
                 Random rnd1 = new Random();
                 int number;
-                int kol = 1;
-                int z = 1;
+                int sum = 0;
                 for (index = 1; index <= itemCount; index++)
                 {
                     number = 1 + rnd1.Next(30);
@@ -50,36 +49,19 @@ namespace Branch_3
                 int[] mas = myAll.ToArray<int>();
                 for (int i = 0; i <= mas.Length - 1; i++)
                 {
-                    if (mas[i] <= 25)
-                    {
-                        z++;
-                        if (z == mas.Length)
-                        {
-                            label.Content = "Элементы не найдены";
-                        }
+                    if (mas[i] > mas[1])
+                        sum = sum + mas[i];
 
-                    }
-                    if (mas[i] > 25)
-                    {
-                        label.Content = "Элемент, подходящий\nпод условие " + mas[i];
-                        break;
-                    }
-
-                    kol++;
 
                 }
-                if (kol != 7)
-                {
-                    label1.Content = "Его номер в списке " + kol;
-                }
-                else
-                    label1.Content = "";
-                kol = 1;
+
+                label.Content = "Сумма элементов\nпревышающих " + mas[1] + "\nравна " + sum;
             }
 
             else
             {
                 MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
         }
 
