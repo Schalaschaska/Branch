@@ -40,7 +40,7 @@ namespace Branch_3
 
                 Random rnd1 = new Random();
                 int number;
-                int sum = 0;
+                int kol = 0;
                 for (index = 1; index <= itemCount; index++)
                 {
                     number = 1 + rnd1.Next(30);
@@ -48,15 +48,13 @@ namespace Branch_3
                     listBox.Items.Add(number);
                 }
                 int[] mas = myAll.ToArray<int>();
-                for (int i = 0; i <= mas.Length - 1; i++)
+                for (int i = 1; i <= mas.Length - 1; i++)
                 {
-                    if (mas[i] % 3 != 0)
-                    {
-                        sum = sum + mas[i];
-                    }
+                    if (mas[i] < mas[0] && mas[i] > mas[itemCount - 1])
+                        kol++;
 
                 }
-                label.Content = "Сумма элементов, не\nкратных 3 равна " + sum;
+                label.Content = "Количество элементов, меньше\n" + mas[0] + " и больше " + mas[itemCount - 1] + " равно " + kol;
 
             }
 
