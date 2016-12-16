@@ -37,35 +37,30 @@ namespace Branch_3
                 List<int> myAll = new List<int>();//Основной список
                 int index;
                 int itemCount = Convert.ToInt32(textBox.Text);
-                if (itemCount < 4)
+
+                Random rnd1 = new Random();
+                int number;
+                int sum = 0;
+                for (index = 1; index <= itemCount; index++)
                 {
-                    MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    number = 1 + rnd1.Next(30);
+                    myAll.Add(number);
+                    listBox.Items.Add(number);
                 }
-                else
+                int[] mas = myAll.ToArray<int>();
+                for (int i = 0; i <= mas.Length - 1; i++)
                 {
-                    Random rnd1 = new Random();
-                    int number;
-                    int kol = 0;
-                    for (index = 1; index <= itemCount; index++)
-                    {
-                        number = 1 + rnd1.Next(30);
-                        myAll.Add(number);
-                        listBox.Items.Add(number);
-                    }
-                    int[] mas = myAll.ToArray<int>();
-                    for (int i = 0; i <= mas.Length - 1; i++)
-                    {
-                        if (mas[i] > mas[3])
-                        {
-                            kol = kol + 1;
-                        }
 
-
+                    if (mas[i] < 21)
+                    {
+                        sum = sum + mas[i];
                     }
-                    label.Content = "Количество элементов,\nпревышающих " + mas[3] + " равно " + kol;
 
                 }
+                label.Content = "Сумма элементов, \nменьше 21 равна " + sum;
+
             }
+
             else
             {
                 MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
