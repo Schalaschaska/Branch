@@ -29,46 +29,57 @@ namespace Branch_3
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            listBox.Items.Clear();
             Regex X = new Regex(@"^\d+$");
             if (X.IsMatch(textBox.Text))
             {
-                listBox1.Items.Clear();
+
                 List<int> myAll = new List<int>();//Основной список
-                List<int> list_2 = new List<int>();//Список выборки
                 int index;
-                int z = 0;
                 int itemCount = Convert.ToInt32(textBox.Text);
                 Random rnd1 = new Random();
                 int number;
-                listBox.Items.Clear();
+                int kol = 1;
+                int z = 1;
                 for (index = 1; index <= itemCount; index++)
                 {
-                    number = 1 + rnd1.Next(200);
+                    number = 1 + rnd1.Next(30);
                     myAll.Add(number);
                     listBox.Items.Add(number);
                 }
                 int[] mas = myAll.ToArray<int>();
-
-                for (int i = 1; i <= mas.Length - 2; i++)
+                for (int i = 0; i <= mas.Length - 1; i++)
                 {
-                    if (mas[i] > mas[i - 1] && mas[i] > mas[i + 1])
+                    if (mas[i] <= 25)
                     {
                         z++;
-                        list_2.Add(mas[i]);
+                        if (z == mas.Length)
+                        {
+                            label.Content = "Элементы не найдены";
+                        }
 
                     }
+                    if (mas[i] > 25)
+                    {
+                        label.Content = "Элемент, подходящий\nпод условие " + mas[i];
+                        break;
+                    }
+
+                    kol++;
+
                 }
-                foreach (int i in list_2)
+                if (kol != 7)
                 {
-
-                    listBox1.Items.Add(i);
-
+                    label1.Content = "Его номер в списке " + kol;
                 }
-                label.Content = "Количество элементов, \nбольше своих соседей равно " + Convert.ToString(z);
+                else
+                    label1.Content = "";
+                kol = 1;
             }
+
             else
             {
-                MessageBox.Show("Ошибка ввода!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
