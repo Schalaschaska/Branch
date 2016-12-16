@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Branch_3")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ТГПУ")]
 [assembly: AssemblyProduct("Branch_3")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright ©  2016 -Mihail 'Schalaschaska' Hlystow")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
