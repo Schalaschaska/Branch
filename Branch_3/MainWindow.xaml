@@ -10,8 +10,10 @@
         <Label x:Name="label" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,77,0,0" Width="201" Height="92"/>
         <Label x:Name="label1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,143,0,0" Width="184"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.875,2.478" Margin="24,24,0,0"/>
-        <Button x:Name="button" Content="Выполнить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="24,52,0,0" Click="button_Click"/>
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="154" Margin="225,24,0,0"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="24,174,0,0" Click="button1_Click"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.187,9.25" Margin="37,203,0,0" Click="button_Click"/>
+        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="133,203,0,0" Click="button1_Click"/>
+        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="235,203,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
+        <Button x:Name="button3" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="334,203,0,0" Click="button3_Click"/>
     </Grid>
 </Window>

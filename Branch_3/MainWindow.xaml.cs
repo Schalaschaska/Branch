@@ -29,66 +29,11 @@ namespace Branch_3
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            ArrayList myAL = new ArrayList();
-            int index;
-            int itemcount = Convert.ToInt32(textBox.Text);
-            Random rn = new Random();
-            int number;
-            listBox.Items.Clear();
-            for (index = 1; index <= itemcount; index++)
-            {
-                number = -100 + rn.Next(200);
-                myAL.Add(number);
-                listBox.Items.Add(number);
-
-            }
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            ArrayList myAL = new ArrayList();
-            int index;
-            int itemcount = Convert.ToInt32(textBox.Text);
-            Random rn = new Random();
-            int number;
-            listBox.Items.Clear();
-            listBox.Items.Add("Исходный массив");
-            for (index = 1; index <= itemcount; index++)
-            {
-                number = -100 + rn.Next(200);
-                myAL.Add(number);
-                listBox.Items.Add(number);
-            }
-            myAL.Sort();
-            listBox.Items.Add("Отсортированный массив");
-            foreach (int elem in myAL)
-            {
-                listBox.Items.Add(elem);
-            }
-        }
+      
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog mydialog = new SaveFileDialog();
-            mydialog.Filter = "Текст(*.TXT)|*.TXT" + "|Все файлы (*.*)|*.* ";
-            if (mydialog.ShowDialog() == true)
-            {
-                string filename = mydialog.FileName;
-                // StreamWriter file = new StreamWriter(filename,false)
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filename, false))
-                    foreach (object inside in listBox.Items)
-                    {
-                        file.WriteLine(inside);
-                    }
-            }
+            
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -127,6 +72,65 @@ namespace Branch_3
                 F.ShowDialog();
             }
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            ArrayList myAL = new ArrayList();
+            int index;
+            int itemcount = Convert.ToInt32(textBox.Text);
+            Random rn = new Random();
+            int number;
+            listBox.Items.Clear();
+            for (index = 1; index <= itemcount; index++)
+            {
+                number = -100 + rn.Next(200);
+                myAL.Add(number);
+                listBox.Items.Add(number);
+
+            }
+        }
+
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog mydialog = new SaveFileDialog();
+            mydialog.Filter = "Текст(*.TXT)|*.TXT" + "|Все файлы (*.*)|*.* ";
+            if (mydialog.ShowDialog() == true)
+            {
+                string filename = mydialog.FileName;
+                // StreamWriter file = new StreamWriter(filename,false)
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filename, false))
+                    foreach (object inside in listBox.Items)
+                    {
+                        file.WriteLine(inside);
+                    }
+            }
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            ArrayList myAL = new ArrayList();
+            int index;
+            int itemcount = Convert.ToInt32(textBox.Text);
+            Random rn = new Random();
+            int number;
+            listBox.Items.Clear();
+            listBox.Items.Add("Исходный массив");
+            for (index = 1; index <= itemcount; index++)
+            {
+                number = -100 + rn.Next(200);
+                myAL.Add(number);
+                listBox.Items.Add(number);
+            }
+            myAL.Sort();
+            listBox.Items.Add("Отсортированный массив");
+            foreach (int elem in myAL)
+            {
+                listBox.Items.Add(elem);
+            }
+        }
+
+
 
         /*  private void Window_KeyUp(object sender, KeyEventArgs e)
           {
