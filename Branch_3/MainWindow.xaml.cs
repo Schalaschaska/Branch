@@ -12,69 +12,128 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Text.RegularExpressions;
+using System.Collections;
+using System.IO;
+using Microsoft.Win32;
+
 
 namespace Branch_3
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml проверка 1
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ArrayList myAL = new ArrayList();
+            int index;
+            int itemcount = Convert.ToInt32(textBox.Text);
+            Random rn = new Random();
+            int number;
             listBox.Items.Clear();
-            Regex X = new Regex(@"^\d+$");
-            if (X.IsMatch(textBox.Text))
+            for (index = 1; index <= itemcount; index++)
             {
-
-                List<int> myAll = new List<int>();//Основной список
-                int index;
-                int itemCount = Convert.ToInt32(textBox.Text);
-
-                Random rnd1 = new Random();
-                int number;
-                int sum = 0;
-                for (index = 1; index <= itemCount; index++)
-                {
-                    number = 1 + rnd1.Next(30);
-                    myAll.Add(number);
-                    listBox.Items.Add(number);
-                }
-                int[] mas = myAll.ToArray<int>();
-                for (int i = 0; i <= mas.Length - 1; i++)
-                {
-
-                    if (mas[i] < 21)
-                    {
-                        sum = sum + mas[i];
-                    }
-
-                }
-                label.Content = "Сумма элементов, \nменьше 21 равна " + sum;
+                number = -100 + rn.Next(200);
+                myAL.Add(number);
+                listBox.Items.Add(number);
 
             }
 
-            else
-            {
-                MessageBox.Show("Ошибка ввода!", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            ArrayList myAL = new ArrayList();
+            int index;
+            int itemcount = Convert.ToInt32(textBox.Text);
+            Random rn = new Random();
+            int number;
+            listBox.Items.Clear();
+            listBox.Items.Add("Исходный массив");
+            for (index = 1; index <= itemcount; index++)
+            {
+                number = -100 + rn.Next(200);
+                myAL.Add(number);
+                listBox.Items.Add(number);
+            }
+            myAL.Sort();
+            listBox.Items.Add("Отсортированный массив");
+            foreach (int elem in myAL)
+            {
+                listBox.Items.Add(elem);
             }
         }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog mydialog = new SaveFileDialog();
+            mydialog.Filter = "Текст(*.TXT)|*.TXT" + "|Все файлы (*.*)|*.* ";
+            if (mydialog.ShowDialog() == true)
+            {
+                string filename = mydialog.FileName;
+                // StreamWriter file = new StreamWriter(filename,false)
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filename, false))
+                    foreach (object inside in listBox.Items)
+                    {
+                        file.WriteLine(inside);
+                    }
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            //Отобразить массив виде гистораммы
+
+            ArrayList myAL = new ArrayList();
+            int sum = 0; //кол - во элементов меньших, чем 21
+            int index;
+            int itemcount = Convert.ToInt32(textBox.Text);
+            Random rn = new Random();
+            int number, nn1 = 10;
+            listBox.Items.Clear();
+            listBox.Items.Add("массив");
+            ArrayList myAl2 = new ArrayList();
+            for (index = 1; index <= itemcount; index++)
+            {
+                myAl2.Add(nn1);
+                number = -100 + rn.Next(200);
+                myAL.Add(number);
+                listBox.Items.Add(number);
+
+            }
+
+            Branch_3.Form1 f1 = new Branch_3.Form1();
+            int[] masive = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            
+            f1.ShowDialog();
+
+        }
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F1)
             {
-                AboutBox1 F = new AboutBox1();
+                Branch_3.AboutBox1 F = new Branch_3.AboutBox1();
                 F.ShowDialog();
             }
         }
+
+        /*  private void Window_KeyUp(object sender, KeyEventArgs e)
+          {
+              if( e.KeyCode == Keys.F1 )
+              {
+                  //show abouts
+              }
+          }*/
     }
 }
